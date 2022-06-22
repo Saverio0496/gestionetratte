@@ -48,6 +48,7 @@ public class AirbusServiceImpl implements AirbusService {
 	@Override
 	@Transactional
 	public void rimuovi(Airbus airbusInstance) {
+		airbusRepository.delete(airbusInstance);
 	}
 
 	@Override

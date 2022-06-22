@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import it.prova.gestionetratte.dto.AirbusDTO;
 import it.prova.gestionetratte.model.Airbus;
 import it.prova.gestionetratte.service.AirbusService;
 import it.prova.gestionetratte.web.api.exception.AirbusNotFoundException;
+import it.prova.gestionetratte.web.api.exception.AirbusWithTrattaNotBeCanceledException;
 import it.prova.gestionetratte.web.api.exception.IdNotNullForInsertException;
 
 @RestController
@@ -65,6 +67,22 @@ public class AirbusController {
 		airbusInput.setId(id);
 		Airbus registaAggiornato = airbusService.aggiorna(airbusInput.buildAirbusModel());
 		return AirbusDTO.buildAirbusDTOFromModel(registaAggiornato, false);
+	}
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public void delete(@PathVariable(required = true) Long id) {
+		Airbus airbus = airbusService.caricaSingoloElementoConTratte(id);
+
+		if (airbus == null)
+			throw new AirbusNotFoundException("Airbus not found con id: " + id);
+
+		if (airbus.getTratte().size() > 0) {
+			throw new AirbusWithTrattaNotBeCanceledException(
+					"Airbus con id: " + id + " non può essere cancellato perchè contiene una tratta!");
+		}
+
+		airbusService.rimuovi(airbus);
 	}
 
 }
