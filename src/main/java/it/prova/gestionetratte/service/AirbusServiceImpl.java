@@ -24,13 +24,13 @@ public class AirbusServiceImpl implements AirbusService {
 	@Override
 	@Transactional(readOnly = true)
 	public Airbus caricaSingoloElemento(Long id) {
-		return null;
+		return airbusRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Airbus caricaSingoloElementoConTratte(Long id) {
-		return null;
+		return airbusRepository.findByIdEager(id);
 	}
 
 	@Override
