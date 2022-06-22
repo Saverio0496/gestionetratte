@@ -22,4 +22,5 @@ public interface AirbusService {
 
 	List<Airbus> findByExample(Airbus example);
 
+	Airbus cercaPerCodiceEDescrizione(String codice, String descrizione);
 }

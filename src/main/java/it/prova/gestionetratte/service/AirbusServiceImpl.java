@@ -2,12 +2,17 @@ package it.prova.gestionetratte.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.prova.gestionetratte.model.Airbus;
+import it.prova.gestionetratte.repository.airbus.AirbusRepository;
 
 @Service
 public class AirbusServiceImpl implements AirbusService {
+
+	@Autowired
+	private AirbusRepository airbusRepository;
 
 	public List<Airbus> listAllElements() {
 		return null;
@@ -30,7 +35,7 @@ public class AirbusServiceImpl implements AirbusService {
 	}
 
 	public Airbus inserisciNuovo(Airbus airbusInstance) {
-		return null;
+		return airbusRepository.save(airbusInstance);
 	}
 
 	public void rimuovi(Airbus airbusInstance) {
@@ -38,6 +43,10 @@ public class AirbusServiceImpl implements AirbusService {
 
 	public List<Airbus> findByExample(Airbus example) {
 		return null;
+	}
+
+	public Airbus cercaPerCodiceEDescrizione(String codice, String descrizione) {
+		return airbusRepository.findByCodiceAndDescrizione(codice, descrizione);
 	}
 
 }
