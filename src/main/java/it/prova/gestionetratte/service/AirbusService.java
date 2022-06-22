@@ -8,8 +8,6 @@ public interface AirbusService {
 
 	List<Airbus> listAllElements();
 
-	List<Airbus> listAllElementsEager();
-
 	Airbus caricaSingoloElemento(Long id);
 
 	Airbus caricaSingoloElementoConTratte(Long id);
@@ -23,4 +21,6 @@ public interface AirbusService {
 	List<Airbus> findByExample(Airbus example);
 
 	Airbus cercaPerCodiceEDescrizione(String codice, String descrizione);
+
+	List<Airbus> listAllElementsEager();
 }

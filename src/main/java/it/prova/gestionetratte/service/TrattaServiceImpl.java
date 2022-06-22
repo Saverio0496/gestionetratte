@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionetratte.model.Tratta;
 import it.prova.gestionetratte.repository.tratta.TrattaRepository;
@@ -14,33 +15,49 @@ public class TrattaServiceImpl implements TrattaService {
 	@Autowired
 	private TrattaRepository trattaRepository;
 
+	@Override
+	@Transactional(readOnly = true)
 	public List<Tratta> listAllElements(boolean eager) {
 		return null;
 	}
 
+	@Override
+	@Transactional(readOnly = true)
 	public Tratta caricaSingoloElemento(Long id) {
 		return null;
 	}
 
+	@Override
+	@Transactional(readOnly = true)
 	public Tratta caricaSingoloElementoEager(Long id) {
 		return null;
 	}
 
+	@Override
+	@Transactional
 	public Tratta aggiorna(Tratta trattaInstance) {
 		return null;
 	}
 
+	@Override
+	@Transactional
 	public Tratta inserisciNuovo(Tratta trattaInstance) {
 		return trattaRepository.save(trattaInstance);
 	}
 
+	@Override
+	@Transactional
 	public void rimuovi(Tratta trattaInstance) {
 	}
 
+	@Override
+	@Transactional(readOnly = true)
 	public List<Tratta> findByExample(Tratta example) {
 		return null;
 	}
 
+	@Override
+	@Transactional
 	public List<Tratta> cercaPerCodiceEDescrizione(String codice, String descrizione) {
 		return trattaRepository.findByCodiceAndDescrizione(codice, descrizione);
 	}
