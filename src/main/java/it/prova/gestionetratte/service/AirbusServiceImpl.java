@@ -36,7 +36,7 @@ public class AirbusServiceImpl implements AirbusService {
 	@Override
 	@Transactional
 	public Airbus aggiorna(Airbus airbusInstance) {
-		return null;
+		return airbusRepository.save(airbusInstance);
 	}
 
 	@Override
