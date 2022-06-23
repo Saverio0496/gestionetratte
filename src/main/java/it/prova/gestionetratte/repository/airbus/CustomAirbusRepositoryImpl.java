@@ -34,8 +34,8 @@ public class CustomAirbusRepositoryImpl implements CustomAirbusRepository {
 			paramaterMap.put("descrizione", "%" + example.getDescrizione() + "%");
 		}
 		if (example.getDataInizioServizio() != null) {
-			whereClauses.add(" a.dataInizioServizio like :dataInizioServizio ");
-			paramaterMap.put("dataInizioServizio", "%" + example.getDataInizioServizio() + "%");
+			whereClauses.add(" a.dataInizioServizio >= :dataInizioServizio ");
+			paramaterMap.put("dataInizioServizio", example.getDataInizioServizio());
 		}
 		if (example.getNumeroPasseggeri() != null && example.getNumeroPasseggeri() > 0) {
 			whereClauses.add(" a.numeroPasseggeri =:numeroPasseggeri ");
