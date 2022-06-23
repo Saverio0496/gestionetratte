@@ -39,7 +39,7 @@ public class TrattaServiceImpl implements TrattaService {
 	@Override
 	@Transactional
 	public Tratta aggiorna(Tratta trattaInstance) {
-		return null;
+		return trattaRepository.save(trattaInstance);
 	}
 
 	@Override
