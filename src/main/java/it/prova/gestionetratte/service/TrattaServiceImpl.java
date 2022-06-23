@@ -27,13 +27,13 @@ public class TrattaServiceImpl implements TrattaService {
 	@Override
 	@Transactional(readOnly = true)
 	public Tratta caricaSingoloElemento(Long id) {
-		return null;
+		return trattaRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Tratta caricaSingoloElementoEager(Long id) {
-		return null;
+		return trattaRepository.findSingleTrattaEager(id);
 	}
 
 	@Override
