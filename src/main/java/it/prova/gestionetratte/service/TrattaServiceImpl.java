@@ -18,7 +18,10 @@ public class TrattaServiceImpl implements TrattaService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tratta> listAllElements(boolean eager) {
-		return null;
+		if (eager)
+			return (List<Tratta>) trattaRepository.findAllTrattaEager();
+
+		return (List<Tratta>) trattaRepository.findAll();
 	}
 
 	@Override
