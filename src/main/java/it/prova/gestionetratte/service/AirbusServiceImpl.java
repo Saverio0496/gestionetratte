@@ -54,7 +54,7 @@ public class AirbusServiceImpl implements AirbusService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Airbus> findByExample(Airbus example) {
-		return null;
+		return airbusRepository.findByExample(example);
 	}
 
 	@Override
