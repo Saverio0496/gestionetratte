@@ -57,7 +57,7 @@ public class TrattaServiceImpl implements TrattaService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tratta> findByExample(Tratta example) {
-		return null;
+		return trattaRepository.findByExample(example);
 	}
 
 	@Override
