@@ -22,4 +22,6 @@ public interface TrattaService {
 
 	List<Tratta> cercaPerCodiceEDescrizione(String codice, String descrizione);
 
+	void concludiTratte();
+
 }

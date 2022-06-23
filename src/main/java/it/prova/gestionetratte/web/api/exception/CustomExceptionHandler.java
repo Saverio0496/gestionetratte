@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import it.prova.gestionetratte.web.api.ListaTratteNonPresentiException;
+import it.prova.gestionetratte.web.api.TrattaNotAnnullataNotBeCanceled;
+
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -70,6 +73,30 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(AirbusWithTrattaNotBeCanceledException.class)
 	public ResponseEntity<Object> handleAirbusWithTrattaNotBeCanceledException(
 			AirbusWithTrattaNotBeCanceledException ex, WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+		body.put("status", HttpStatus.NOT_FOUND);
+
+		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(TrattaNotAnnullataNotBeCanceled.class)
+	public ResponseEntity<Object> handleTrattaNotAnnullataNotBeCanceled(TrattaNotAnnullataNotBeCanceled ex,
+			WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+		body.put("status", HttpStatus.NOT_FOUND);
+
+		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(ListaTratteNonPresentiException.class)
+	public ResponseEntity<Object> handleListaTratteNonPresentiException(ListaTratteNonPresentiException ex,
+			WebRequest request) {
 
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());

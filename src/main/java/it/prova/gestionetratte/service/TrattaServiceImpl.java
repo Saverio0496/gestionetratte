@@ -1,5 +1,6 @@
 package it.prova.gestionetratte.service;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,12 @@ public class TrattaServiceImpl implements TrattaService {
 	@Transactional
 	public List<Tratta> cercaPerCodiceEDescrizione(String codice, String descrizione) {
 		return trattaRepository.findByCodiceAndDescrizione(codice, descrizione);
+	}
+
+	@Override
+	@Transactional
+	public void concludiTratte() {
+		trattaRepository.concludiTratte(LocalTime.now());
 	}
 
 }

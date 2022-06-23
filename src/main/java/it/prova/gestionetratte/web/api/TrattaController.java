@@ -89,4 +89,9 @@ public class TrattaController {
 				true);
 	}
 
+	@GetMapping("/concludiTratte")
+	public void concludiTratte() {
+		trattaService.concludiTratte();
+	}
+
 }
