@@ -51,6 +51,7 @@ public class TrattaServiceImpl implements TrattaService {
 	@Override
 	@Transactional
 	public void rimuovi(Tratta trattaInstance) {
+		trattaRepository.delete(trattaInstance);
 	}
 
 	@Override
