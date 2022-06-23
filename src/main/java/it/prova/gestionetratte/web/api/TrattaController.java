@@ -21,6 +21,7 @@ import it.prova.gestionetratte.model.Stato;
 import it.prova.gestionetratte.model.Tratta;
 import it.prova.gestionetratte.service.TrattaService;
 import it.prova.gestionetratte.web.api.exception.IdNotNullForInsertException;
+import it.prova.gestionetratte.web.api.exception.TrattaNotAnnullataNotBeCanceled;
 import it.prova.gestionetratte.web.api.exception.TrattaNotFoundException;
 
 @RestController

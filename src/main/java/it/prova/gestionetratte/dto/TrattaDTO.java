@@ -18,29 +18,29 @@ import it.prova.gestionetratte.model.Tratta;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TrattaDTO {
 
-	private Long id;
+	protected Long id;
 
 	@NotBlank(message = "{codice.notblank}")
-	private String codice;
+	protected String codice;
 
 	@NotBlank(message = "{descrizione.notblank}")
-	private String descrizione;
+	protected String descrizione;
 
 	@NotNull(message = "{data.notnull}")
-	private LocalDate data;
+	protected LocalDate data;
 
 	@NotNull(message = "{oraDecollo.notnull}")
-	private LocalTime oraDecollo;
+	protected LocalTime oraDecollo;
 
 	@NotNull(message = "{oraAtterraggio.notnull}")
-	private LocalTime oraAtterraggio;
+	protected LocalTime oraAtterraggio;
 
 	@NotNull(message = "{stato.notnull}")
-	private Stato stato;
+	protected Stato stato;
 
 	@JsonIgnoreProperties(value = { "tratte" })
 	@NotNull(message = "{airbus.notnull}")
-	private AirbusDTO airbus;
+	protected AirbusDTO airbus;
 
 	public TrattaDTO() {
 	}

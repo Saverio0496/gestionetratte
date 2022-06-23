@@ -23,4 +23,7 @@ public interface AirbusService {
 	Airbus cercaPerCodiceEDescrizione(String codice, String descrizione);
 
 	List<Airbus> listAllElementsEager();
+
+	List<Airbus> listaAirbusEvidenziandoSovrapposizioni();
+
 }

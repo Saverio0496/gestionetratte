@@ -1,4 +1,4 @@
-package it.prova.gestionetratte.web.api;
+package it.prova.gestionetratte.web.api.exception;
 
 public class TrattaNotAnnullataNotBeCanceled extends RuntimeException {
 

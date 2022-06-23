@@ -63,8 +63,16 @@ public class AirbusServiceImpl implements AirbusService {
 		return airbusRepository.findByCodiceAndDescrizione(codice, descrizione);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
 	public List<Airbus> listAllElementsEager() {
 		return (List<Airbus>) airbusRepository.findAllEager();
+	}
+
+	@Override
+	@Transactional
+	public List<Airbus> listaAirbusEvidenziandoSovrapposizioni() {
+		return (List<Airbus>) airbusRepository.findAllWithSovrapposizione();
 	}
 
 }

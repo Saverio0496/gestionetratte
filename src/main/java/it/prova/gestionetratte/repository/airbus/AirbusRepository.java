@@ -17,4 +17,8 @@ public interface AirbusRepository extends CrudRepository<Airbus, Long>, CustomAi
 	@Query("from Airbus a left join fetch a.tratte where a.id=?1")
 	Airbus findByIdEager(Long idAirbus);
 
+	@Query(value = "select distinct a.* from Tratta t1, Tratta t2, Airbus a where t1.airbus_id = a.id and t1.airbus_id = t2.airbus_id and t1.id <> t2.id and ((t1.oraatterraggio between t2.oradecollo and t2.oraatterraggio) or (t1.oradecollo between t2.oradecollo and t2.oraatterraggio));", nativeQuery = true)
+	List<Airbus> findAllWithSovrapposizione();
+	
 }
+
